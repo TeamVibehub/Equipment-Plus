@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "id": "ringed",
+  "version": "${version}",
+  "name": "Ringed",
+  "description": "PLACEHOLDER",
+  "authors": [
+    "PrismaticYT"
+  ],
+  "contact": {
+    "repo": "TeamVibehub/ringed"
+  },
+  "license": "GPL-3.0",
+  "environment": "*",
+  "entrypoints": {
+    "main": [
+      "net.prismatic.ringed.Ringed"
+    ]
+  },
+  "depends": {
+    "fabricloader": ">=0.9.3+build.207",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  }
+}
