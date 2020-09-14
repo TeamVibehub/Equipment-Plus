@@ -35,6 +35,6 @@ public class RingedInitializer implements ModInitializer {
         EntityComponents.setRespawnCopyStrategy(SHIELDING, RespawnCopyStrategy.ALWAYS_COPY);
         TrinketSlots.addSlot(SlotGroups.HAND, Slots.RING, new Identifier("trinkets", "textures/item/empty_trinket_slot_ring.png"));
         Registry.register(Registry.ITEM, new Identifier("ringed", "ring"), RING);
-        Registry.register(Registry.ITEM, new Identifier("ringed", "shielding_ring"), SHIELDING_RING)
+        Registry.register(Registry.ITEM, new Identifier("ringed", "shielding_ring"), SHIELDING_RING);
     }
 }
