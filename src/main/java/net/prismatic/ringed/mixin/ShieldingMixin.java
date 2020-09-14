@@ -10,19 +10,10 @@ import org.spongepowered.asm.mixin.injection.ModifyVariable;
 public class ShieldingMixin {
     @ModifyVariable(at = @At("HEAD"), method = "damage")
     public float damage(float amount) {
-        int usedProtection;
         PlayerShieldingStatus status = new PlayerShieldingStatus((PlayerEntity) (Object) this);
-        if (status.availableProtection() > 0) {
-            if (status.availableProtection() > amount) {
-                status.consume((int) amount);
-                usedProtection = (int) amount;
-                amount = 0;
-            } else {
-                status.consume(status.availableProtection());
-                amount -= status.availableProtection();
-                usedProtection = status.availableProtection();
-            }
-            status.setCooldown(usedProtection * 60);
+        if (status.get()) {
+            // 60% damage reduction, oh yeah
+            amount = (amount*60) / 100;
         }
         return amount;
     }

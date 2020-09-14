@@ -1,24 +1,16 @@
 package net.prismatic.ringed.item;
 
 import net.minecraft.entity.player.PlayerEntity;
+import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
-import net.prismatic.ringed.RingedInitializer;
 import net.prismatic.ringed.api.PlayerShieldingStatus;
 import net.prismatic.ringed.api.RingItem;
 
 public class ShieldingRing extends RingItem {
     private PlayerShieldingStatus status;
 
-    public ShieldingRing() {
-        super();
-    }
-
-    @Override
-    public void tick(PlayerEntity player, ItemStack stack) {
-        if (status == null) {
-            this.status = new PlayerShieldingStatus(player);
-        }
-        status.tick();
+    public ShieldingRing(ItemGroup group) {
+        super(group);
     }
 
     @Override
@@ -27,7 +19,6 @@ public class ShieldingRing extends RingItem {
             this.status = new PlayerShieldingStatus(player);
         }
         status.set(true);
-        status.setProtection(3);
     }
 
     @Override
@@ -36,6 +27,5 @@ public class ShieldingRing extends RingItem {
             this.status = new PlayerShieldingStatus(player);
         }
         status.set(false);
-        status.clearProtection();
     }
 }

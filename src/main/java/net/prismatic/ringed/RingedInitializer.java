@@ -31,7 +31,7 @@ public class RingedInitializer implements ModInitializer {
             .appendItems(stacks -> stacks.add(new ItemStack(RING)))
             .build();
 
-    static ShieldingRing SHIELDING_RING = new ShieldingRing();
+    static ShieldingRing SHIELDING_RING = new ShieldingRing(RINGED);
     @Override
     public void onInitialize() {
         EntityComponents.setRespawnCopyStrategy(SHIELDING, RespawnCopyStrategy.ALWAYS_COPY);
