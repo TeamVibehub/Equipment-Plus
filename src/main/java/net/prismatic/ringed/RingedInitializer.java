@@ -15,6 +15,7 @@ import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.prismatic.ringed.api.RingItem;
 import net.prismatic.ringed.component.ShieldingComponent;
+import net.prismatic.ringed.item.ShieldingRing;
 
 public class RingedInitializer implements ModInitializer {
 
@@ -22,6 +23,7 @@ public class RingedInitializer implements ModInitializer {
             ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier("ringed", "shielding"), ShieldingComponent.class);
 
     static RingItem RING = new RingItem();
+    static ShieldingRing SHIELDING_RING = new ShieldingRing();
     public static ItemGroup RINGED = FabricItemGroupBuilder.create(
             new Identifier("ringed", "ringed"))
             .icon(() -> new ItemStack(RING))
@@ -33,5 +35,6 @@ public class RingedInitializer implements ModInitializer {
         EntityComponents.setRespawnCopyStrategy(SHIELDING, RespawnCopyStrategy.ALWAYS_COPY);
         TrinketSlots.addSlot(SlotGroups.HAND, Slots.RING, new Identifier("trinkets", "textures/item/empty_trinket_slot_ring.png"));
         Registry.register(Registry.ITEM, new Identifier("ringed", "ring"), RING);
+        Registry.register(Registry.ITEM, new Identifier("ringed", "shielding_ring"), SHIELDING_RING)
     }
 }
