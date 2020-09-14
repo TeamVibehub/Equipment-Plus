@@ -7,6 +7,7 @@ import net.prismatic.ringed.component.ShieldingComponent;
 
 public class PlayerShieldingStatus {
     private final ShieldingComponent shielding;
+    private int cooldownTicks;
 
     /**
      * Constructs a new PlayerShieldingStatus instance from a PlayerEntity
@@ -14,6 +15,8 @@ public class PlayerShieldingStatus {
      */
     public PlayerShieldingStatus(PlayerEntity player) {
         this.shielding = RingedInitializer.SHIELDING.get(ComponentProvider.fromEntity(player));
+        this.cooldownTicks = 0;
+        shielding.sync();
     }
 
     /**
@@ -30,14 +33,7 @@ public class PlayerShieldingStatus {
      */
     public void set(boolean state) {
         shielding.setState(state);
-    }
-
-    /**
-     * Gets the player's shielding cooldown
-     * @return The player's shielding cooldown
-     */
-    public int getCooldown() {
-        return shielding.getCooldown();
+        shielding.sync();
     }
 
     /**
@@ -46,13 +42,20 @@ public class PlayerShieldingStatus {
      */
     public void setCooldown(int time) {
         shielding.setCooldown(time);
+        shielding.sync();
+        cooldownTicks = shielding.getCooldown();
     }
 
     /**
      * Ticks the cooldown by 1
      */
     public void tick() {
+        cooldownTicks = shielding.getCooldown();
+        if (shielding.getCooldown() == (cooldownTicks - 60) && shielding.getCooldown() >= 0) {
+            shielding.setAvailableProtection(shielding.getAvailableProtection() + 1);
+        }
         shielding.tick();
+        shielding.sync();
     }
 
     /**
@@ -77,23 +80,7 @@ public class PlayerShieldingStatus {
      */
     public void consume(int amount) {
         shielding.setAvailableProtection(shielding.getAvailableProtection() - amount);
-    }
-
-    /**
-     * Gets the shielding type
-     * Type 1: Normal, Type 2: Protective, Type 3: Speedy
-     * @return The shielding type
-     */
-    public int type() {
-        return shielding.getType();
-    }
-
-    /**
-     * Sets the shielding type
-     * @param type The type to use
-     */
-    public void type(int type) {
-        shielding.setType(type);
+        shielding.sync();
     }
 
     /**
@@ -102,5 +89,13 @@ public class PlayerShieldingStatus {
     public void clearProtection() {
         shielding.setAvailableProtection(0);
         shielding.setTotalProtection(0);
+        shielding.sync();
+    }
+
+    public void setProtection(int protecc) {
+        shielding.setTotalProtection(protecc);
+        if (shielding.getCooldown() == 0) {
+            shielding.setAvailableProtection(protecc);
+        }
     }
 }

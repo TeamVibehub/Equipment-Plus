@@ -16,7 +16,6 @@ public class ShieldingComponent implements RingComponent, EntitySyncedComponent 
     private int cooldown;
     private int totalProtection;
     private int availableProtection;
-    private int type;
     private final PlayerEntity player;
 
     public ShieldingComponent(PlayerEntity player) {
@@ -25,7 +24,6 @@ public class ShieldingComponent implements RingComponent, EntitySyncedComponent 
         this.cooldown = 0;
         this.totalProtection = 0;
         this.availableProtection = 0;
-        this.type = 0;
     }
 
     @Override
@@ -51,11 +49,17 @@ public class ShieldingComponent implements RingComponent, EntitySyncedComponent 
     @Override
     public void fromTag(CompoundTag tag) {
         this.active = tag.getBoolean("state");
+        this.availableProtection = tag.getInt("availableProtection");
+        this.totalProtection = tag.getInt("totalProtection");
+        this.cooldown = tag.getInt("cooldown");
     }
 
     @Override
     public CompoundTag toTag(CompoundTag tag) {
         tag.putBoolean("state", this.active);
+        tag.putInt("availableProtection", this.availableProtection);
+        tag.putInt("totalProtection", this.totalProtection);
+        tag.putInt("cooldown", this.cooldown);
         return tag;
     }
 
@@ -87,14 +91,6 @@ public class ShieldingComponent implements RingComponent, EntitySyncedComponent 
         this.availableProtection = amount;
     }
 
-    public int getType() {
-        return this.type;
-    }
-
-    public void setType(int type) {
-        this.type = type;
-    }
-
     @Override
     public void syncWith(ServerPlayerEntity player) {
         if (player == this.player) {
@@ -111,7 +107,6 @@ public class ShieldingComponent implements RingComponent, EntitySyncedComponent 
         packet.writeInt(this.availableProtection);
         packet.writeInt(this.totalProtection);
         packet.writeInt(this.cooldown);
-        packet.writeInt(this.type);
     }
 
     @Override
@@ -120,6 +115,5 @@ public class ShieldingComponent implements RingComponent, EntitySyncedComponent 
         this.availableProtection = packet.readInt();
         this.totalProtection = packet.readInt();
         this.cooldown = packet.readInt();
-        this.type = packet.readInt();
     }
 }

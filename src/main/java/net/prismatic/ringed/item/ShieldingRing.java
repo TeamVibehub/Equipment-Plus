@@ -2,6 +2,7 @@ package net.prismatic.ringed.item;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.prismatic.ringed.RingedInitializer;
 import net.prismatic.ringed.api.PlayerShieldingStatus;
 import net.prismatic.ringed.api.RingItem;
 
@@ -26,7 +27,7 @@ public class ShieldingRing extends RingItem {
             this.status = new PlayerShieldingStatus(player);
         }
         status.set(true);
-        status.type(1);
+        status.setProtection(3);
     }
 
     @Override
@@ -35,7 +36,6 @@ public class ShieldingRing extends RingItem {
             this.status = new PlayerShieldingStatus(player);
         }
         status.set(false);
-        status.type(0);
         status.clearProtection();
     }
 }
