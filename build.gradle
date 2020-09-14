@@ -11,6 +11,7 @@ repositories {
         name = "NerdHubMC"
         url = "https://maven.abusedmaster.xyz/"
     }
+    mavenLocal()
 }
 
 sourceCompatibility = JavaVersion.VERSION_1_8
@@ -27,6 +28,10 @@ dependencies {
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
     modImplementation "com.github.emilyploszaj:trinkets:${project.trinkets_version}"
+    include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cardinal_components_version}"
+    include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cardinal_components_version}"
+    modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cardinal_components_version}"
+    modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cardinal_components_version}"
 }
 
 processResources {
