@@ -7,8 +7,6 @@ import net.prismatic.ringed.component.ShieldingComponent;
 
 public class PlayerShieldingStatus {
     private final ShieldingComponent shielding;
-    private boolean cooldownCompleted;
-    private int cooldownTicks;
 
     /**
      * Constructs a new PlayerShieldingStatus instance from a PlayerEntity
@@ -16,23 +14,22 @@ public class PlayerShieldingStatus {
      */
     public PlayerShieldingStatus(PlayerEntity player) {
         this.shielding = RingedInitializer.SHIELDING.get(ComponentProvider.fromEntity(player));
-        this.cooldownTicks = 0;
         shielding.sync();
     }
 
     /**
-     * Gets the state of the player's shielding
-     * @return Whether or not the player has active shielding
+     * Gets the state of the player's shielding.
+     * Returns TRUE if the player has a Ring of Shielding equipped, FALSE otherwise.
      */
     public boolean get() {
         return shielding.getState();
     }
 
     /**
-     * Sets the state of the player's shielding
-     * @param state The state of the player's shielding
+     * Sets the state of the player's shielding.
      */
     public void set(boolean state) {
+        shielding.sync();
         shielding.setState(state);
         shielding.sync();
     }
