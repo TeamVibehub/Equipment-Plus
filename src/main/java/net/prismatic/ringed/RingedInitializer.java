@@ -5,6 +5,8 @@ import dev.emi.trinkets.api.Slots;
 import dev.emi.trinkets.api.TrinketSlots;
 import nerdhub.cardinal.components.api.ComponentRegistry;
 import nerdhub.cardinal.components.api.ComponentType;
+import nerdhub.cardinal.components.api.util.EntityComponents;
+import nerdhub.cardinal.components.api.util.RespawnCopyStrategy;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.fabric.api.client.itemgroup.FabricItemGroupBuilder;
 import net.minecraft.item.ItemGroup;
@@ -28,6 +30,7 @@ public class RingedInitializer implements ModInitializer {
 
     @Override
     public void onInitialize() {
+        EntityComponents.setRespawnCopyStrategy(SHIELDING, RespawnCopyStrategy.ALWAYS_COPY);
         TrinketSlots.addSlot(SlotGroups.HAND, Slots.RING, new Identifier("trinkets", "textures/item/empty_trinket_slot_ring.png"));
         Registry.register(Registry.ITEM, new Identifier("ringed", "ring"), RING);
     }

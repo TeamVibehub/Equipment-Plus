@@ -17,6 +17,9 @@
       "net.prismatic.ringed.RingedInitializer"
     ]
   },
+  "mixins": [
+    "ringed.mixins.json"
+  ],
   "depends": {
     "fabricloader": ">=0.9.3+build.207",
     "fabric": "*",
