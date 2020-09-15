@@ -16,9 +16,6 @@ public class ShieldingMixin {
             // 60% damage reduction, oh yeah
             amount = (amount*60) / 100;
         }
-        if (status.get() && source.isUnblockable() && source.getMagic()) {
-            amount = (amount*60) / 100;
-        }
         return amount;
     }
 }

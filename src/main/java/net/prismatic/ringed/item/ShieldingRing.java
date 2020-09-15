@@ -7,7 +7,6 @@ import net.prismatic.ringed.api.PlayerShieldingStatus;
 import net.prismatic.ringed.api.RingItem;
 
 public class ShieldingRing extends RingItem {
-    private PlayerShieldingStatus status;
 
     public ShieldingRing(ItemGroup group) {
         super(group);
@@ -15,17 +14,11 @@ public class ShieldingRing extends RingItem {
 
     @Override
     public void onEquip(PlayerEntity player, ItemStack stack) {
-        if (status == null) {
-            this.status = new PlayerShieldingStatus(player);
-        }
-        status.set(true);
+        new PlayerShieldingStatus(player).set(true);
     }
 
     @Override
     public void onUnequip(PlayerEntity player, ItemStack stack) {
-        if (status == null) {
-            this.status = new PlayerShieldingStatus(player);
-        }
-        status.set(false);
+        new PlayerShieldingStatus(player).set(false);
     }
 }
