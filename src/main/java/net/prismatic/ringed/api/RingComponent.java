@@ -1,4 +1,4 @@
-package net.prismatic.ringed.component;
+package net.prismatic.ringed.api;
 
 import dev.onyxstudios.cca.api.v3.entity.PlayerComponent;
 

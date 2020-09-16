@@ -10,44 +10,44 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.prismatic.ringed.api.RingComponent;
 
-public class ShieldingComponent implements RingComponent, EntitySyncedComponent {
-    private boolean active;
-    private final PlayerEntity player;
+public class LuckComponent implements RingComponent, EntitySyncedComponent {
+    private boolean state;
+    private final PlayerEntity entity;
 
-    public ShieldingComponent(PlayerEntity player) {
-        this.player = player;
-        this.active = false;
+    public LuckComponent(PlayerEntity player) {
+        this.entity = player;
+        this.state = false;
     }
 
     @Override
     public boolean getState() {
-        return this.active;
+        return this.state;
     }
 
     @Override
     public void setState(boolean state) {
-        this.active = state;
+        this.state = state;
     }
 
     @Override
     public Entity getEntity() {
-        return player;
+        return this.entity;
     }
 
     @Override
     public void fromTag(CompoundTag tag) {
-        this.active = tag.getBoolean("state");
+        this.state = tag.getBoolean("state");
     }
 
     @Override
     public CompoundTag toTag(CompoundTag tag) {
-        tag.putBoolean("state", this.active);
+        tag.putBoolean("state", this.state);
         return tag;
     }
 
     @Override
     public void syncWith(ServerPlayerEntity player) {
-        if (player == this.player) {
+        if (player == this.entity) {
             PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
             this.writeToPacket(buf);
             ServerSidePacketRegistry.INSTANCE.sendToPlayer(player, PACKET_ID, buf);
@@ -58,10 +58,11 @@ public class ShieldingComponent implements RingComponent, EntitySyncedComponent 
 
     @Override
     public void writeToPacket(PacketByteBuf packet) {
-        packet.writeBoolean(this.active);
+        packet.writeBoolean(this.state);
     }
+
     @Override
     public void readFromPacket(PacketByteBuf packet) {
-        this.active = packet.readBoolean();
+        this.state = packet.readBoolean();
     }
 }

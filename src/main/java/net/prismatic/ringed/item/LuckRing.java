@@ -2,22 +2,22 @@ package net.prismatic.ringed.item;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.prismatic.ringed.api.PlayerShieldingStatus;
+import net.prismatic.ringed.api.PlayerLuckStatus;
 import net.prismatic.ringed.api.Ring;
 
-public class ShieldingRing extends Ring {
+public class LuckRing extends Ring {
 
-    public ShieldingRing() {
+    public LuckRing() {
         super();
     }
 
     @Override
     public void onEquip(PlayerEntity player, ItemStack stack) {
-        new PlayerShieldingStatus(player).set(true);
+        new PlayerLuckStatus(player).set(true);
     }
 
     @Override
     public void onUnequip(PlayerEntity player, ItemStack stack) {
-        new PlayerShieldingStatus(player).set(false);
+        new PlayerLuckStatus(player).set(false);
     }
 }

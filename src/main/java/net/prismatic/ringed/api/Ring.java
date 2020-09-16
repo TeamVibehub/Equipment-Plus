@@ -2,16 +2,11 @@ package net.prismatic.ringed.api;
 
 import dev.emi.trinkets.api.Slots;
 import dev.emi.trinkets.api.TrinketItem;
-import net.minecraft.item.ItemGroup;
 
 
-public class RingItem extends TrinketItem {
+public class Ring extends TrinketItem {
 
-    public RingItem(ItemGroup group) {
-        super(new Settings().group(group).maxCount(1));
-    }
-
-    public RingItem() {
+    public Ring() {
         super(new Settings().maxCount(1));
     }
 
