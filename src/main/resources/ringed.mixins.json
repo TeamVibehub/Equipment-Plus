@@ -4,6 +4,7 @@
   "package": "net.prismatic.ringed.mixin",
   "compatibilityLevel": "JAVA_8",
   "mixins": [
+    "DodgeMixin",
     "LuckMixin",
     "ShieldingMixin"
   ],

@@ -10,12 +10,12 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 import net.prismatic.ringed.api.RingComponent;
 
-public class LuckComponent implements RingComponent, EntitySyncedComponent {
+public class DodgeComponent implements RingComponent, EntitySyncedComponent {
+    private final PlayerEntity player;
     private boolean state;
-    private final PlayerEntity entity;
 
-    public LuckComponent(PlayerEntity player) {
-        this.entity = player;
+    public DodgeComponent(PlayerEntity player) {
+        this.player = player;
         this.state = false;
     }
 
@@ -31,7 +31,7 @@ public class LuckComponent implements RingComponent, EntitySyncedComponent {
 
     @Override
     public Entity getEntity() {
-        return this.entity;
+        return this.player;
     }
 
     @Override
@@ -47,10 +47,10 @@ public class LuckComponent implements RingComponent, EntitySyncedComponent {
 
     @Override
     public void syncWith(ServerPlayerEntity player) {
-        if (player == this.entity) {
+        if (player == this.player) {
             PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
             this.writeToPacket(buf);
-            ServerSidePacketRegistry.INSTANCE.sendToPlayer(this.entity, PACKET_ID, buf);
+            ServerSidePacketRegistry.INSTANCE.sendToPlayer(this.player, PACKET_ID, buf);
         } else {
             return;
         }
