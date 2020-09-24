@@ -1,4 +1,4 @@
-package net.prismatic.ringed.component;
+package net.prismatic.equipmentplus.api.component;
 
 import io.netty.buffer.Unpooled;
 import nerdhub.cardinal.components.api.util.sync.EntitySyncedComponent;
@@ -8,14 +8,13 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.prismatic.ringed.api.RingComponent;
 
-public class DodgeComponent implements RingComponent, EntitySyncedComponent {
-    private final PlayerEntity player;
+public class LuckComponent implements PlayerStatusComponent, EntitySyncedComponent {
     private boolean state;
+    private final PlayerEntity entity;
 
-    public DodgeComponent(PlayerEntity player) {
-        this.player = player;
+    public LuckComponent(PlayerEntity player) {
+        this.entity = player;
         this.state = false;
     }
 
@@ -27,16 +26,18 @@ public class DodgeComponent implements RingComponent, EntitySyncedComponent {
     @Override
     public void setState(boolean state) {
         this.state = state;
+        this.sync();
     }
 
     @Override
     public Entity getEntity() {
-        return this.player;
+        return this.entity;
     }
 
     @Override
     public void fromTag(CompoundTag tag) {
         this.state = tag.getBoolean("state");
+        this.sync();
     }
 
     @Override
@@ -47,10 +48,10 @@ public class DodgeComponent implements RingComponent, EntitySyncedComponent {
 
     @Override
     public void syncWith(ServerPlayerEntity player) {
-        if (player == this.player) {
+        if (player == this.entity) {
             PacketByteBuf buf = new PacketByteBuf(Unpooled.buffer());
             this.writeToPacket(buf);
-            ServerSidePacketRegistry.INSTANCE.sendToPlayer(this.player, PACKET_ID, buf);
+            ServerSidePacketRegistry.INSTANCE.sendToPlayer(this.entity, PACKET_ID, buf);
         } else {
             return;
         }

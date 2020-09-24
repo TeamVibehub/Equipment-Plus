@@ -1,9 +1,8 @@
-package net.prismatic.ringed.item;
+package net.prismatic.equipmentplus.item.ring;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.prismatic.ringed.api.PlayerDodgeStatus;
-import net.prismatic.ringed.api.Ring;
+import net.prismatic.equipmentplus.api.status.PlayerDodgeStatus;
 
 public class DodgeRing extends Ring {
     

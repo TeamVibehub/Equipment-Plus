@@ -1,4 +1,4 @@
-package net.prismatic.ringed;
+package net.prismatic.equipmentplus;
 
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
@@ -15,31 +15,31 @@ import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.prismatic.ringed.api.Ring;
-import net.prismatic.ringed.component.DodgeComponent;
-import net.prismatic.ringed.component.LuckComponent;
-import net.prismatic.ringed.component.ShieldingComponent;
-import net.prismatic.ringed.item.DodgeRing;
-import net.prismatic.ringed.item.LuckRing;
-import net.prismatic.ringed.item.ShieldingRing;
+import net.prismatic.equipmentplus.item.ring.Ring;
+import net.prismatic.equipmentplus.api.component.DodgeComponent;
+import net.prismatic.equipmentplus.api.component.LuckComponent;
+import net.prismatic.equipmentplus.api.component.ShieldingComponent;
+import net.prismatic.equipmentplus.item.ring.DodgeRing;
+import net.prismatic.equipmentplus.item.ring.LuckRing;
+import net.prismatic.equipmentplus.item.ring.ShieldingRing;
 
-public class RingedInitializer implements ModInitializer {
+public class EquipmentPlusInitializer implements ModInitializer {
 
     public static final ComponentType<ShieldingComponent> SHIELDING =
-            ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier("ringed", "shielding"), ShieldingComponent.class);
+            ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier("equipmentplus", "shielding"), ShieldingComponent.class);
 
     public static final ComponentType<LuckComponent> LUCK =
-            ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier("ringed", "luck"), LuckComponent.class);
+            ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier("equipmentplus", "luck"), LuckComponent.class);
 
     public static final ComponentType<DodgeComponent> DODGE =
-            ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier("ringed", "dodge"), DodgeComponent.class);
+            ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier("equipmentplus", "dodge"), DodgeComponent.class);
 
     static Ring RING = new Ring();
     static LuckRing RING_LUCK = new LuckRing();
     static DodgeRing RING_DODGE = new DodgeRing();
     static ShieldingRing RING_SHIELDING = new ShieldingRing();
-    public static ItemGroup RINGED = FabricItemGroupBuilder.create(
-            new Identifier("ringed", "ringed"))
+    public static ItemGroup RINGS = FabricItemGroupBuilder.create(
+            new Identifier("equipmentplus", "rings"))
             .icon(() -> new ItemStack(RING))
             .appendItems(stacks -> {
                 stacks.add(new ItemStack(RING));
@@ -57,9 +57,9 @@ public class RingedInitializer implements ModInitializer {
         EntityComponents.setRespawnCopyStrategy(DODGE, RespawnCopyStrategy.ALWAYS_COPY);
         EntityComponents.setRespawnCopyStrategy(SHIELDING, RespawnCopyStrategy.ALWAYS_COPY);
         TrinketSlots.addSlot(SlotGroups.HAND, Slots.RING, new Identifier("trinkets", "textures/item/empty_trinket_slot_ring.png"));
-        Registry.register(Registry.ITEM, new Identifier("ringed", "ring"), RING);
-        Registry.register(Registry.ITEM, new Identifier("ringed", "ring_luck"), RING_LUCK);
-        Registry.register(Registry.ITEM, new Identifier("ringed", "ring_dodge"), RING_DODGE);
-        Registry.register(Registry.ITEM, new Identifier("ringed", "ring_shielding"), RING_SHIELDING);
+        Registry.register(Registry.ITEM, new Identifier("equipmentplus", "ring"), RING);
+        Registry.register(Registry.ITEM, new Identifier("equipmentplus", "ring_luck"), RING_LUCK);
+        Registry.register(Registry.ITEM, new Identifier("equipmentplus", "ring_dodge"), RING_DODGE);
+        Registry.register(Registry.ITEM, new Identifier("equipmentplus", "ring_shielding"), RING_SHIELDING);
     }
 }

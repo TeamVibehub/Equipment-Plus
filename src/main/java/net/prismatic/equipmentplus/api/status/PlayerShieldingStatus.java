@@ -1,15 +1,15 @@
-package net.prismatic.ringed.api;
+package net.prismatic.equipmentplus.api.status;
 
 import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
 import net.minecraft.entity.player.PlayerEntity;
-import net.prismatic.ringed.RingedInitializer;
-import net.prismatic.ringed.component.ShieldingComponent;
+import net.prismatic.equipmentplus.EquipmentPlusInitializer;
+import net.prismatic.equipmentplus.api.component.ShieldingComponent;
 
 public class PlayerShieldingStatus {
     private final ShieldingComponent shielding;
 
     public PlayerShieldingStatus(PlayerEntity player) {
-        this.shielding = RingedInitializer.SHIELDING.get(ComponentProvider.fromEntity(player));
+        this.shielding = EquipmentPlusInitializer.SHIELDING.get(ComponentProvider.fromEntity(player));
     }
 
     public boolean get() {
@@ -18,6 +18,5 @@ public class PlayerShieldingStatus {
 
     public void set(boolean state) {
         shielding.setState(state);
-        shielding.sync();
     }
 }

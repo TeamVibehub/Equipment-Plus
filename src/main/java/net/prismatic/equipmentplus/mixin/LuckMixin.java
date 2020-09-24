@@ -1,11 +1,11 @@
-package net.prismatic.ringed.mixin;
+package net.prismatic.equipmentplus.mixin;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
-import net.prismatic.ringed.api.PlayerLuckStatus;
+import net.prismatic.equipmentplus.api.status.PlayerLuckStatus;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;

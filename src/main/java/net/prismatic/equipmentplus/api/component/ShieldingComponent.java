@@ -1,4 +1,4 @@
-package net.prismatic.ringed.component;
+package net.prismatic.equipmentplus.api.component;
 
 import io.netty.buffer.Unpooled;
 import nerdhub.cardinal.components.api.util.sync.EntitySyncedComponent;
@@ -8,9 +8,8 @@ import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
-import net.prismatic.ringed.api.RingComponent;
 
-public class ShieldingComponent implements RingComponent, EntitySyncedComponent {
+public class ShieldingComponent implements PlayerStatusComponent, EntitySyncedComponent {
     private boolean active;
     private final PlayerEntity player;
 
@@ -27,6 +26,7 @@ public class ShieldingComponent implements RingComponent, EntitySyncedComponent 
     @Override
     public void setState(boolean state) {
         this.active = state;
+        this.sync();
     }
 
     @Override
@@ -37,6 +37,7 @@ public class ShieldingComponent implements RingComponent, EntitySyncedComponent 
     @Override
     public void fromTag(CompoundTag tag) {
         this.active = tag.getBoolean("state");
+        this.sync();
     }
 
     @Override

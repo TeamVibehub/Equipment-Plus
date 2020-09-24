@@ -1,24 +1,24 @@
 {
   "schemaVersion": 1,
-  "id": "ringed",
+  "id": "equipmentplus",
   "version": "${version}",
-  "name": "Ringed",
+  "name": "Equip,ent Plus",
   "description": "PLACEHOLDER",
   "authors": [
     "PrismaticYT"
   ],
   "contact": {
-    "repo": "TeamVibehub/ringed"
+    "repo": "TeamVibehub/equipment-plus"
   },
   "license": "GPL-3.0",
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.prismatic.ringed.RingedInitializer"
+      "net.prismatic.equipmentplus.EquipmentPlusInitializer"
     ]
   },
   "mixins": [
-    "ringed.mixins.json"
+    "rings.mixins.json"
   ],
   "depends": {
     "fabricloader": ">=0.9.3+build.207",

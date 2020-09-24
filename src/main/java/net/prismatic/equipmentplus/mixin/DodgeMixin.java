@@ -1,8 +1,8 @@
-package net.prismatic.ringed.mixin;
+package net.prismatic.equipmentplus.mixin;
 
 import net.minecraft.entity.damage.DamageSource;
 import net.minecraft.entity.player.PlayerEntity;
-import net.prismatic.ringed.api.PlayerDodgeStatus;
+import net.prismatic.equipmentplus.api.status.PlayerDodgeStatus;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.ModifyVariable;

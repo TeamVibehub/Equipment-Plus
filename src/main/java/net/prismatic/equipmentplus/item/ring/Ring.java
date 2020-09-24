@@ -1,4 +1,4 @@
-package net.prismatic.ringed.api;
+package net.prismatic.equipmentplus.item.ring;
 
 import dev.emi.trinkets.api.Slots;
 import dev.emi.trinkets.api.TrinketItem;
