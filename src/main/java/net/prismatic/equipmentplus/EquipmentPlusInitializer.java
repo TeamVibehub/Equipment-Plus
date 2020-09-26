@@ -14,6 +14,7 @@ import net.fabricmc.fabric.api.container.ContainerProviderRegistry;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemGroup;
 import net.minecraft.item.ItemStack;
+import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
 import net.prismatic.equipmentplus.api.backpack.BackpackInventory;
@@ -57,9 +58,16 @@ public class EquipmentPlusInitializer implements ModInitializer {
 
     @Override
     public void onInitialize() {
-        ContainerProviderRegistry.INSTANCE.registerFactory(new Identifier("equipmentplus", "backpack"), ((syncId, identifier, player, packet) -> {
+        ContainerProviderRegistry.INSTANCE.registerFactory(new Identifier("equipmentplus", "backpack_trinket"), ((syncId, identifier, player, packet) -> {
             final ItemStack stack = packet.readItemStack();
-            final BackpackInventory inventory = Backpack.inventory(stack, player);
+            final BackpackInventory inventory = Backpack.inventory(stack);
+            return new BackpackScreenHandler(syncId, player.inventory, inventory.getInventory(), inventory.getInventoryWidth(), inventory.getInventoryHeight());
+        }));
+
+        ContainerProviderRegistry.INSTANCE.registerFactory(new Identifier("equipmentplus", "backpack_use"), ((syncId, identifier, player, packet) -> {
+            final ItemStack stack = packet.readItemStack();
+            final Hand hand = packet.readInt() == 0 ? Hand.MAIN_HAND : Hand.OFF_HAND;
+            final BackpackInventory inventory = Backpack.inventory(stack, hand);
             return new BackpackScreenHandler(syncId, player.inventory, inventory.getInventory(), inventory.getInventoryWidth(), inventory.getInventoryHeight());
         }));
 

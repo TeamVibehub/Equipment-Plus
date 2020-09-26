@@ -19,7 +19,7 @@ public class BackpackNetworkHandler {
             TrinketComponent trinkets = TrinketsApi.getTrinketComponent(player);
             Item backpack = trinkets.getStack(SlotGroups.CHEST, Slots.BACKPACK).getItem();
             if (backpack instanceof Backpack) {
-                ContainerProviderRegistry.INSTANCE.openContainer(new Identifier("equipmentplus", "backpack"), player, packet -> packet.writeItemStack(TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK)));
+                ContainerProviderRegistry.INSTANCE.openContainer(new Identifier("equipmentplus", "backpack_trinket"), player, packet -> packet.writeItemStack(TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK)));
             }
         })));
     }

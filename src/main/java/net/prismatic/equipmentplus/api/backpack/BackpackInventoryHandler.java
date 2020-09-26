@@ -12,17 +12,23 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.Hand;
+import net.prismatic.equipmentplus.api.item.Backpack;
 
 public class BackpackInventoryHandler implements Inventory, BackpackInventory {
     public DefaultedList<ItemStack> items;
     public int width;
     public int height;
-    private final PlayerEntity player;
+    private final Hand hand;
 
-    public BackpackInventoryHandler(CompoundTag tag, PlayerEntity player)
+    public BackpackInventoryHandler(CompoundTag tag)
     {
-        this.player = player;
+        this.hand = null;
+        this.fromTag(tag);
+    }
 
+    public BackpackInventoryHandler(CompoundTag tag, Hand hand)
+    {
+        this.hand = hand;
         this.fromTag(tag);
     }
 
@@ -124,12 +130,22 @@ public class BackpackInventoryHandler implements Inventory, BackpackInventory {
     {
         Inventory.super.onClose(player);
 
-        if(!TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).hasTag())
-        {
-            TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).setTag(new CompoundTag());
+        if (TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).getItem() instanceof Backpack) {
+            if (!TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).hasTag()) {
+                TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).setTag(new CompoundTag());
+            }
+            TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).getTag().put("backpack", toTag());
         }
 
-        TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).getTag().put("backpack", toTag());
+        if (this.hand != null) {
+            if (player.getStackInHand(this.hand).getItem() instanceof Backpack) {
+                if (!player.getStackInHand(this.hand).hasTag()) {
+                    player.getStackInHand(this.hand).setTag(new CompoundTag());
+                }
+                player.getStackInHand(this.hand).getTag().put("backpack", toTag());
+            }
+        }
+
         player.playSound(SoundEvents.BLOCK_WOOL_PLACE, SoundCategory.PLAYERS, 1f, 1f);
     }
 }
