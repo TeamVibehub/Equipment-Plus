@@ -2,19 +2,22 @@
   "schemaVersion": 1,
   "id": "equipmentplus",
   "version": "${version}",
-  "name": "Equip,ent Plus",
+  "name": "Equipment Plus",
   "description": "PLACEHOLDER",
   "authors": [
     "PrismaticYT"
   ],
   "contact": {
-    "repo": "TeamVibehub/equipment-plus"
+    "repo": "TeamVibehub/equipmentplus"
   },
   "license": "GPL-3.0",
   "environment": "*",
   "entrypoints": {
     "main": [
       "net.prismatic.equipmentplus.EquipmentPlusInitializer"
+    ],
+    "client": [
+      "net.prismatic.equipmentplus.EquipmentPlusClient"
     ]
   },
   "mixins": [

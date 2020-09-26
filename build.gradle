@@ -11,6 +11,13 @@ repositories {
         name = "NerdHubMC"
         url = "https://maven.abusedmaster.xyz/"
     }
+
+    maven {
+        name = "CottonMC"
+        url = "https://server.bbkr.space/artifactory/libs-release"
+    }
+
+    jcenter()
     mavenLocal()
 }
 
@@ -22,12 +29,14 @@ version = project.mod_version
 group = project.maven_group
 
 dependencies {
+    include "me.shedaniel.cloth:basic-math:+"
+    modImplementation "me.shedaniel.cloth:basic-math:+"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
-    include "com.github.emilyploszaj:trinkets:${project.trinkets_version}"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
-    modImplementation "com.github.emilyploszaj:trinkets:${project.trinkets_version}"
+    include("com.github.emilyploszaj:trinkets:${project.trinkets_version}") { transitive = false }
+    modImplementation("com.github.emilyploszaj:trinkets:${project.trinkets_version}") { transitive = false }
     include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cardinal_components_version}"
     include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cardinal_components_version}"
     modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cardinal_components_version}"

@@ -2,6 +2,7 @@ package net.prismatic.equipmentplus.item.ring;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
+import net.prismatic.equipmentplus.api.item.Ring;
 import net.prismatic.equipmentplus.api.status.PlayerShieldingStatus;
 
 public class ShieldingRing extends Ring {

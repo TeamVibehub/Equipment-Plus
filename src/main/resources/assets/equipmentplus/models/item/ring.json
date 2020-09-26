@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "ringed:item/ring_luck"
+    "layer0": "equipmentplus:item/ring"
   }
 } 
