@@ -17,6 +17,15 @@ repositories {
         url = "https://server.bbkr.space/artifactory/libs-release"
     }
 
+    maven {
+        name = "AdrianTodt's Maven"
+        url = "https://dl.bintray.com/adriantodt/maven"
+    }
+
+    maven {
+        url = "https://maven.theillusivec4.top"
+    }
+
     jcenter()
     mavenLocal()
 }
@@ -29,12 +38,12 @@ version = project.mod_version
 group = project.maven_group
 
 dependencies {
-    include "me.shedaniel.cloth:basic-math:+"
-    modImplementation "me.shedaniel.cloth:basic-math:+"
     mappings "net.fabricmc:yarn:${project.yarn_mappings}:v2"
     minecraft "com.mojang:minecraft:${project.minecraft_version}"
     modImplementation "net.fabricmc:fabric-loader:${project.loader_version}"
+    include "top.theillusivec4.caelus:caelus-fabric${project.caelus_version}"
     modImplementation "net.fabricmc.fabric-api:fabric-api:${project.fabric_version}"
+    modImplementation "top.theillusivec4.caelus:caelus-fabric:${project.caelus_version}"
     include("com.github.emilyploszaj:trinkets:${project.trinkets_version}") { transitive = false }
     modImplementation("com.github.emilyploszaj:trinkets:${project.trinkets_version}") { transitive = false }
     include "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cardinal_components_version}"
@@ -42,7 +51,6 @@ dependencies {
     modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-base:${project.cardinal_components_version}"
     modImplementation "io.github.onyxstudios.Cardinal-Components-API:cardinal-components-entity:${project.cardinal_components_version}"
 }
-
 processResources {
     inputs.property "version", project.version
 

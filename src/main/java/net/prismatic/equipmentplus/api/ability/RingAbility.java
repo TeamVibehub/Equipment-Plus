@@ -1,7 +1,6 @@
-package net.prismatic.equipmentplus.api.component;
+package net.prismatic.equipmentplus.api.ability;
 
 import io.netty.buffer.Unpooled;
-import nerdhub.cardinal.components.api.util.sync.EntitySyncedComponent;
 import net.fabricmc.fabric.api.network.ServerSidePacketRegistry;
 import net.minecraft.entity.Entity;
 import net.minecraft.entity.player.PlayerEntity;
@@ -9,40 +8,43 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-public class ShieldingComponent implements PlayerStatusComponent, EntitySyncedComponent {
-    private boolean active;
+public class RingAbility implements Ability {
     private final PlayerEntity player;
+    private int type;
+    private boolean state;
 
-    public ShieldingComponent(PlayerEntity player) {
+    public RingAbility(PlayerEntity player) {
         this.player = player;
-        this.active = false;
     }
 
     @Override
-    public boolean getState() {
-        return this.active;
+    public boolean get(int type) {
+        return this.type == type && this.state;
     }
 
     @Override
-    public void setState(boolean state) {
-        this.active = state;
+    public void set(boolean state, int type) {
+        this.state = state;
+        this.type = type;
         this.sync();
     }
 
     @Override
     public Entity getEntity() {
-        return player;
+        return this.player;
     }
 
     @Override
     public void fromTag(CompoundTag tag) {
-        this.active = tag.getBoolean("state");
+        this.state = tag.getBoolean("state");
+        this.type = tag.getInt("ability");
         this.sync();
     }
 
     @Override
     public CompoundTag toTag(CompoundTag tag) {
-        tag.putBoolean("state", this.active);
+        tag.putBoolean("state", this.state);
+        tag.putInt("ability", this.type);
         return tag;
     }
 
@@ -59,10 +61,13 @@ public class ShieldingComponent implements PlayerStatusComponent, EntitySyncedCo
 
     @Override
     public void writeToPacket(PacketByteBuf packet) {
-        packet.writeBoolean(this.active);
+        packet.writeBoolean(this.state);
+        packet.writeInt(this.type);
     }
+
     @Override
     public void readFromPacket(PacketByteBuf packet) {
-        this.active = packet.readBoolean();
+        this.state = packet.readBoolean();
+        this.type = packet.readInt();
     }
 }

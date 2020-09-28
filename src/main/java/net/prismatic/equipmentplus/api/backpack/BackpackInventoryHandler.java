@@ -15,6 +15,7 @@ import net.minecraft.util.Hand;
 import net.prismatic.equipmentplus.api.item.Backpack;
 
 public class BackpackInventoryHandler implements Inventory, BackpackInventory {
+    private final boolean isTrinket;
     public DefaultedList<ItemStack> items;
     public int width;
     public int height;
@@ -22,12 +23,14 @@ public class BackpackInventoryHandler implements Inventory, BackpackInventory {
 
     public BackpackInventoryHandler(CompoundTag tag)
     {
+        this.isTrinket = true;
         this.hand = null;
         this.fromTag(tag);
     }
 
     public BackpackInventoryHandler(CompoundTag tag, Hand hand)
     {
+        this.isTrinket = false;
         this.hand = hand;
         this.fromTag(tag);
     }
@@ -130,14 +133,14 @@ public class BackpackInventoryHandler implements Inventory, BackpackInventory {
     {
         Inventory.super.onClose(player);
 
-        if (TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).getItem() instanceof Backpack) {
+        if (TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).getItem() instanceof Backpack && isTrinket) {
             if (!TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).hasTag()) {
                 TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).setTag(new CompoundTag());
             }
             TrinketsApi.getTrinketComponent(player).getStack(SlotGroups.CHEST, Slots.BACKPACK).getTag().put("backpack", toTag());
         }
 
-        if (this.hand != null) {
+        if (this.hand != null && !isTrinket) {
             if (player.getStackInHand(this.hand).getItem() instanceof Backpack) {
                 if (!player.getStackInHand(this.hand).hasTag()) {
                     player.getStackInHand(this.hand).setTag(new CompoundTag());

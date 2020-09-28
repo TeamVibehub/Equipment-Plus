@@ -1,4 +1,4 @@
-package net.prismatic.equipmentplus;
+package net.prismatic.equipmentplus.core;
 
 import io.netty.buffer.Unpooled;
 import net.fabricmc.api.ClientModInitializer;

@@ -14,8 +14,8 @@ import net.prismatic.equipmentplus.api.backpack.BackpackInventoryHandler;
 
 @SuppressWarnings("deprecation")
 public class Backpack extends TrinketItem {
-    public Backpack() {
-        super(new Settings().maxCount(1));
+    public Backpack(Settings settings) {
+        super(settings.maxCount(1));
     }
 
     @Override

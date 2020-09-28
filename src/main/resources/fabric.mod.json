@@ -14,10 +14,10 @@
   "environment": "*",
   "entrypoints": {
     "main": [
-      "net.prismatic.equipmentplus.EquipmentPlusInitializer"
+      "net.prismatic.equipmentplus.core.EquipmentPlusInitializer"
     ],
     "client": [
-      "net.prismatic.equipmentplus.EquipmentPlusClient"
+      "net.prismatic.equipmentplus.core.EquipmentPlusClient"
     ]
   },
   "mixins": [

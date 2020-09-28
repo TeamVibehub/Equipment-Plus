@@ -1,9 +1,11 @@
 {
   "container.equipmentplus.backpack": "Backpack",
   "itemGroup.equipmentplus.rings": "Equipment Plus Rings",
+  "itemGroup.equipmentplus.backpacks": "Equipment Plus Backpacks",
   "item.equipmentplus.ring": "Ring",
   "item.equipmentplus.ring_luck": "Ring of Luck",
   "item.equipmentplus.ring_shielding": "Ring of Shielding",
   "item.equipmentplus.ring_dodge": "Ring of Dodging",
-  "item.simple_backpack.backpack": "Backpack"
+  "item.equipmentplus.backpack": "Backpack",
+  "item.equipmentplus.backpack_netherite": "Netherite Backpack"
 }
