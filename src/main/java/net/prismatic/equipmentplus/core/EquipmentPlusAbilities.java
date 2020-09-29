@@ -3,10 +3,10 @@ package net.prismatic.equipmentplus.core;
 import nerdhub.cardinal.components.api.ComponentRegistry;
 import nerdhub.cardinal.components.api.ComponentType;
 import net.minecraft.util.Identifier;
-import net.prismatic.equipmentplus.api.PlayerAbility;
+import net.prismatic.equipmentplus.api.Ability;
 
 public class EquipmentPlusAbilities {
-    public static final ComponentType<PlayerAbility> RING =
-            ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier("equipmentplus", "ring"), PlayerAbility.class);
+    public static final ComponentType<Ability> RING =
+            ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier("equipmentplus", "ring"), Ability.class);
 
 }

@@ -15,9 +15,9 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.Registry;
-import net.prismatic.equipmentplus.api.PlayerAbility;
-import net.prismatic.equipmentplus.ui.backpack.BackpackInventory;
-import net.prismatic.equipmentplus.ui.backpack.BackpackScreenHandler;
+import net.prismatic.equipmentplus.api.Ability;
+import net.prismatic.equipmentplus.ui.BackpackInventory;
+import net.prismatic.equipmentplus.ui.BackpackScreenHandler;
 import net.prismatic.equipmentplus.api.Backpack;
 import net.prismatic.equipmentplus.api.Ring;
 
@@ -66,7 +66,7 @@ public class EquipmentPlusInitializer implements ModInitializer {
             return new BackpackScreenHandler(syncId, player.inventory, inventory.getInventory(), inventory.getInventoryWidth(), inventory.getInventoryHeight());
         }));
         
-        EntityComponentCallback.event(PlayerEntity.class).register(((playerEntity, componentContainer) -> componentContainer.put(EquipmentPlusAbilities.RING, new PlayerAbility(playerEntity))));
+        EntityComponentCallback.event(PlayerEntity.class).register(((playerEntity, componentContainer) -> componentContainer.put(EquipmentPlusAbilities.RING, new Ability(playerEntity))));
         EntityComponents.setRespawnCopyStrategy(EquipmentPlusAbilities.RING, RespawnCopyStrategy.ALWAYS_COPY);
 
         Registry.register(Registry.ITEM, new Identifier("equipmentplus", "ring"), RING_BASIC);

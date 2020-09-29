@@ -1,4 +1,4 @@
-package net.prismatic.equipmentplus.ui.backpack;
+package net.prismatic.equipmentplus.ui;
 
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;

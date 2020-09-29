@@ -2,9 +2,10 @@ package net.prismatic.equipmentplus.api;
 
 import dev.emi.trinkets.api.Slots;
 import dev.emi.trinkets.api.TrinketItem;
+import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
-import net.prismatic.equipmentplus.api.ability.status.RingAbilityStatus;
+import net.prismatic.equipmentplus.core.EquipmentPlusAbilities;
 
 
 public class Ring extends TrinketItem {
@@ -18,13 +19,13 @@ public class Ring extends TrinketItem {
     @Override
     public void onEquip(PlayerEntity player, ItemStack stack) {
         if (this.type > 0) {
-            new RingAbilityStatus(player).set(true, this.type);
+            EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).set(true, this.type);
         }
     }
 
     @Override
     public void onUnequip(PlayerEntity player, ItemStack stack) {
-        new RingAbilityStatus(player).set(false, 0);
+        EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).set(false, 0);
     }
 
     @Override

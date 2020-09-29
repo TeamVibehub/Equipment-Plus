@@ -10,7 +10,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import net.prismatic.equipmentplus.ui.backpack.BackpackInventoryHandler;
+import net.prismatic.equipmentplus.ui.BackpackInventoryHandler;
 
 @SuppressWarnings("deprecation")
 public class Backpack extends TrinketItem {

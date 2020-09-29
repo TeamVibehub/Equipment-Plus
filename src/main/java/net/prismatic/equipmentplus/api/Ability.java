@@ -10,12 +10,12 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.PacketByteBuf;
 import net.minecraft.server.network.ServerPlayerEntity;
 
-public class PlayerAbility implements PlayerComponent, EntitySyncedComponent {
+public class Ability implements PlayerComponent, EntitySyncedComponent {
     private final PlayerEntity player;
     private int type;
     private boolean state;
 
-    public PlayerAbility(PlayerEntity player) {
+    public Ability(PlayerEntity player) {
         this.player = player;
     }
 

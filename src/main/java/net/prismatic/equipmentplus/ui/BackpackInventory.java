@@ -1,4 +1,4 @@
-package net.prismatic.equipmentplus.ui.backpack;
+package net.prismatic.equipmentplus.ui;
 
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
@@ -32,7 +32,6 @@ public interface BackpackInventory
                 listTag.add(compoundTag);
             }
         }
-
         tag.put("items", listTag);
     }
 

@@ -1,4 +1,4 @@
-package net.prismatic.equipmentplus.ui.backpack;
+package net.prismatic.equipmentplus.ui;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import net.minecraft.client.gui.screen.ingame.HandledScreen;

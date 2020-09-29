@@ -1,4 +1,4 @@
-package net.prismatic.equipmentplus.ui.backpack;
+package net.prismatic.equipmentplus.ui;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;

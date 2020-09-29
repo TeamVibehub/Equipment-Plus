@@ -12,8 +12,8 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
-import net.prismatic.equipmentplus.ui.backpack.BackpackClientScreen;
-import net.prismatic.equipmentplus.ui.backpack.BackpackScreenHandler;
+import net.prismatic.equipmentplus.ui.BackpackClientScreen;
+import net.prismatic.equipmentplus.ui.BackpackScreenHandler;
 import org.lwjgl.glfw.GLFW;
 
 @SuppressWarnings("deprecation")
