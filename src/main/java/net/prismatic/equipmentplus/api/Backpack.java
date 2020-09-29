@@ -1,4 +1,4 @@
-package net.prismatic.equipmentplus.api.item;
+package net.prismatic.equipmentplus.api;
 
 import dev.emi.trinkets.api.Slots;
 import dev.emi.trinkets.api.TrinketItem;
@@ -10,7 +10,7 @@ import net.minecraft.util.Hand;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.TypedActionResult;
 import net.minecraft.world.World;
-import net.prismatic.equipmentplus.api.backpack.BackpackInventoryHandler;
+import net.prismatic.equipmentplus.ui.backpack.BackpackInventoryHandler;
 
 @SuppressWarnings("deprecation")
 public class Backpack extends TrinketItem {

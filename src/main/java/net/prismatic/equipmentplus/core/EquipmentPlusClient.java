@@ -12,15 +12,15 @@ import net.minecraft.network.PacketByteBuf;
 import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.Util;
-import net.prismatic.equipmentplus.api.backpack.BackpackClientScreen;
-import net.prismatic.equipmentplus.api.backpack.BackpackScreenHandler;
+import net.prismatic.equipmentplus.ui.backpack.BackpackClientScreen;
+import net.prismatic.equipmentplus.ui.backpack.BackpackScreenHandler;
 import org.lwjgl.glfw.GLFW;
 
 @SuppressWarnings("deprecation")
 public class EquipmentPlusClient implements ClientModInitializer {
     private boolean wasPressed;
 
-    private static final KeyBinding keyBinding = KeyBindingHelper.registerKeyBinding(new KeyBinding(
+    private static final KeyBinding backpack = KeyBindingHelper.registerKeyBinding(new KeyBinding(
         "key.equipmentplus.backpack",
         GLFW.GLFW_KEY_B,
         "category.equipmentplus.equipmentplus"
@@ -29,7 +29,7 @@ public class EquipmentPlusClient implements ClientModInitializer {
     @Override
     public void onInitializeClient() {
         ClientTickEvents.END_CLIENT_TICK.register(client -> {
-            boolean isPressed = keyBinding.isPressed();
+            boolean isPressed = backpack.isPressed();
             if (isPressed && !wasPressed) {
                 if (client.player == null) {
                     System.out.println("Client player is null?!");

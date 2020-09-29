@@ -1,11 +1,12 @@
 package net.prismatic.equipmentplus.mixin;
 
+import dev.onyxstudios.cca.api.v3.component.ComponentProvider;
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.item.ItemStack;
 import net.minecraft.loot.context.LootContext;
 import net.minecraft.loot.context.LootContextParameters;
 import net.minecraft.loot.function.ApplyBonusLootFunction;
-import net.prismatic.equipmentplus.api.ability.status.RingAbilityStatus;
+import net.prismatic.equipmentplus.core.EquipmentPlusAbilities;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
@@ -25,7 +26,7 @@ public class LuckMixin {
     private int addLuck(int level) {
         if (this.context.get(LootContextParameters.THIS_ENTITY) instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) this.context.get(LootContextParameters.THIS_ENTITY);
-            if (new RingAbilityStatus(player).get(2)) {
+            if (EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).get(2)) {
                 level++;
             }
         }

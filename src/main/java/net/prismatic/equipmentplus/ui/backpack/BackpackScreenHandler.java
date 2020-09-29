@@ -1,4 +1,4 @@
-package net.prismatic.equipmentplus.api.backpack;
+package net.prismatic.equipmentplus.ui.backpack;
 
 import net.minecraft.entity.player.PlayerEntity;
 import net.minecraft.entity.player.PlayerInventory;
@@ -8,8 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
-import net.minecraft.util.Hand;
-import net.prismatic.equipmentplus.api.item.Backpack;
+import net.prismatic.equipmentplus.api.Backpack;
 
 public class BackpackScreenHandler extends ScreenHandler
 {

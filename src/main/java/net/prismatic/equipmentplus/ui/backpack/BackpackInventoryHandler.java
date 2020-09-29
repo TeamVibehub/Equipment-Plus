@@ -1,4 +1,4 @@
-package net.prismatic.equipmentplus.api.backpack;
+package net.prismatic.equipmentplus.ui.backpack;
 
 import dev.emi.trinkets.api.SlotGroups;
 import dev.emi.trinkets.api.Slots;
@@ -12,7 +12,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.Hand;
-import net.prismatic.equipmentplus.api.item.Backpack;
+import net.prismatic.equipmentplus.api.Backpack;
 
 public class BackpackInventoryHandler implements Inventory, BackpackInventory {
     private final boolean isTrinket;

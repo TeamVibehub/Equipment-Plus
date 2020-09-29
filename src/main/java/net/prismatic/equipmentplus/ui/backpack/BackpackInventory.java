@@ -1,4 +1,4 @@
-package net.prismatic.equipmentplus.api.backpack;
+package net.prismatic.equipmentplus.ui.backpack;
 
 import net.minecraft.inventory.Inventory;
 import net.minecraft.item.ItemStack;
