@@ -13,7 +13,7 @@ public class ShieldingMixin {
     @ModifyVariable(at = @At("HEAD"), method = "damage")
     public float damage(float amount, DamageSource source) {
         Ability ability = EquipmentPlusAbilities.RING.get(((PlayerEntity) (Object) this));
-        if (ability.get(3) && !source.isUnblockable()) {
+        if (ability.state && ability.type == 3 && !source.isUnblockable()) {
             // 60% damage reduction, oh yeah
             amount = (amount*60) / 100;
         }

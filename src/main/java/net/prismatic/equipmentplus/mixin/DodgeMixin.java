@@ -13,7 +13,7 @@ public class DodgeMixin {
     @ModifyVariable(at = @At("HEAD"), method = "damage")
     public float damage(float amount, DamageSource source) {
         Ability ability = EquipmentPlusAbilities.RING.get(((PlayerEntity) (Object) this));
-        if (ability.get(1) && !source.isUnblockable()) {
+        if (ability.state && ability.type == 1 && !source.isUnblockable()) {
             double random = Math.random();
             if (random <= 0.1) {
                 amount = 0;

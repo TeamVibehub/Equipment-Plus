@@ -26,7 +26,7 @@ public class LuckMixin {
     private int addLuck(int level) {
         if (this.context.get(LootContextParameters.THIS_ENTITY) instanceof PlayerEntity) {
             PlayerEntity player = (PlayerEntity) this.context.get(LootContextParameters.THIS_ENTITY);
-            if (EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).get(2)) {
+            if (EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).state && EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).type == 2) {
                 level++;
             }
         }
