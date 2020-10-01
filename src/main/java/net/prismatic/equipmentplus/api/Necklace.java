@@ -11,30 +11,26 @@ import net.prismatic.equipmentplus.core.EquipmentPlusAbilities;
 import org.apache.logging.log4j.LogManager;
 
 
-public class Ring extends TrinketItem {
+public class Necklace extends TrinketItem {
     private final int type;
     private final StatusEffectInstance effect;
     private final EntityAttributeModifier modifier;
 
-    public Ring(int type) {
+    public Necklace(int type) {
         super(new Settings().maxCount(1));
-        if (type <= 0) {
-            this.type = -1;
-        } else {
-            this.type = type;
-        }
+        this.type = type;
         this.effect = null;
         this.modifier = null;
     }
 
-    public Ring(StatusEffectInstance effect) {
+    public Necklace(StatusEffectInstance effect) {
         super(new Settings().maxCount(1));
         this.type = 0;
         this.effect = effect;
         this.modifier = null;
     }
 
-    public Ring(EntityAttributeModifier modifier) {
+    public Necklace(EntityAttributeModifier modifier) {
         super(new Settings().maxCount(1));
         this.type = 0;
         this.effect = null;
@@ -43,36 +39,36 @@ public class Ring extends TrinketItem {
 
     @Override
     public void onEquip(PlayerEntity player, ItemStack stack) {
-        if (this.type <= 0) {
+        if (this.type <= 0 && this.effect == null && this.modifier == null) {
             LogManager.getLogger("EquipmentPlus").error("Someone fucked up! [Type of '" + this.getName().asString() + "' was <= 0 during construction]");
-            EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).type = 0;
+            EquipmentPlusAbilities.NECKLACE.get(ComponentProvider.fromEntity(player)).type = 0;
         }
 
-        EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).state = true;
+        EquipmentPlusAbilities.NECKLACE.get(ComponentProvider.fromEntity(player)).state = true;
 
         if (this.type > 0) {
-            EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).type = this.type;
+            EquipmentPlusAbilities.NECKLACE.get(ComponentProvider.fromEntity(player)).type = this.type;
         }
 
         if (this.modifier != null) {
-            EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).modifier = this.modifier;
+            EquipmentPlusAbilities.NECKLACE.get(ComponentProvider.fromEntity(player)).modifier = this.modifier;
         }
 
         if (this.effect != null) {
-            EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).effect = this.effect;
+            EquipmentPlusAbilities.NECKLACE.get(ComponentProvider.fromEntity(player)).effect = this.effect;
         }
     }
 
     @Override
     public void onUnequip(PlayerEntity player, ItemStack stack) {
-        EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).type = 0;
-        EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).state = false;
-        EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).modifier = null;
-        EquipmentPlusAbilities.RING.get(ComponentProvider.fromEntity(player)).effect = null;
+        EquipmentPlusAbilities.NECKLACE.get(ComponentProvider.fromEntity(player)).type = 0;
+        EquipmentPlusAbilities.NECKLACE.get(ComponentProvider.fromEntity(player)).state = false;
+        EquipmentPlusAbilities.NECKLACE.get(ComponentProvider.fromEntity(player)).modifier = null;
+        EquipmentPlusAbilities.NECKLACE.get(ComponentProvider.fromEntity(player)).effect = null;
     }
 
     @Override
     public boolean canWearInSlot(String group, String slot) {
-        return slot.equals(Slots.RING);
+        return slot.equals(Slots.NECKLACE);
     }
 }

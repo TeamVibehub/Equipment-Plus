@@ -9,4 +9,6 @@ public class EquipmentPlusAbilities {
     public static final ComponentType<Ability> RING =
             ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier("equipmentplus", "ring"), Ability.class);
 
+    public static final ComponentType<Ability> NECKLACE =
+            ComponentRegistry.INSTANCE.registerIfAbsent(new Identifier("equipmentplus", "necklace"), Ability.class);
 }

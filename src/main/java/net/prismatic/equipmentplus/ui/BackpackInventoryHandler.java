@@ -12,7 +12,7 @@ import net.minecraft.sound.SoundCategory;
 import net.minecraft.sound.SoundEvents;
 import net.minecraft.util.collection.DefaultedList;
 import net.minecraft.util.Hand;
-import net.prismatic.equipmentplus.api.Backpack;
+import net.prismatic.equipmentplus.item.Backpack;
 
 public class BackpackInventoryHandler implements Inventory, BackpackInventory {
     private final boolean isTrinket;

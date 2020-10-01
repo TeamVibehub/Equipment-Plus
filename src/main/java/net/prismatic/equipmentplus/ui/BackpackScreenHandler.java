@@ -8,7 +8,7 @@ import net.minecraft.item.ItemStack;
 import net.minecraft.screen.ScreenHandler;
 import net.minecraft.screen.slot.Slot;
 import net.minecraft.screen.slot.SlotActionType;
-import net.prismatic.equipmentplus.api.Backpack;
+import net.prismatic.equipmentplus.item.Backpack;
 
 public class BackpackScreenHandler extends ScreenHandler
 {

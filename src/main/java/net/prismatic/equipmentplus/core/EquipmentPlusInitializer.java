@@ -18,7 +18,7 @@ import net.minecraft.util.registry.Registry;
 import net.prismatic.equipmentplus.api.Ability;
 import net.prismatic.equipmentplus.ui.BackpackInventory;
 import net.prismatic.equipmentplus.ui.BackpackScreenHandler;
-import net.prismatic.equipmentplus.api.Backpack;
+import net.prismatic.equipmentplus.item.Backpack;
 import net.prismatic.equipmentplus.api.Ring;
 
 @SuppressWarnings("deprecation")
